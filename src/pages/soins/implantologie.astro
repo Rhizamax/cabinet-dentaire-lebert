@@ -1,0 +1,300 @@
+---
+import SoinLayout from "../../layouts/SoinLayout.astro";
+
+const sousThemes = [
+  {
+    label: "Implants dentaires — principes et indications",
+    video: "/videos/implant-principes.mp4",
+    texte: `
+      <p>L'implant dentaire est une vis en titane insérée dans l'os de la mâchoire
+      pour remplacer la racine d'une dent absente. Sur cet implant est fixée une
+      couronne prothétique, identique à une vraie dent.</p>
+      <p>Il est indiqué pour toute personne adulte ayant perdu une ou plusieurs
+      dents, à condition que l'os soit en quantité suffisante.</p>
+    `,
+  },
+  {
+    label: "Mise en place de l'implant",
+    video: "/videos/implant-pose.mp4",
+    texte: `
+      <p>La pose se déroule sous anesthésie locale en une séance. Le praticien
+      fore un logement dans l'os puis visse l'implant. Une période de
+      cicatrisation de 2 à 6 mois est ensuite nécessaire.</p>
+    `,
+  },
+  {
+    label: "Déroulement et enjeux de l'intervention",
+    video: "",
+    texte: `
+      <p>L'intervention se déroule en plusieurs étapes :</p>
+      <ul>
+        <li>Bilan radiologique (scanner 3D)</li>
+        <li>Pose chirurgicale sous anesthésie locale</li>
+        <li>Phase de cicatrisation osseuse (ostéo-intégration)</li>
+        <li>Pose de la couronne définitive</li>
+      </ul>
+    `,
+  },
+  {
+    label: "Prothèse amovible sur implants",
+    video: "/videos/implant-prothese-amovible.mp4",
+    texte: `
+      <p>Pour les patients édentés, il est possible de stabiliser un dentier
+      amovible grâce à 2 ou 4 implants. Le patient peut retirer la prothèse
+      pour le nettoyage mais elle tient fermement pendant les repas.</p>
+    `,
+  },
+  {
+    label: "Prothèse dentaire fixe sur implants",
+    video: "/videos/implant-prothese-fixe.mp4",
+    texte: `
+      <p>La prothèse fixe sur implants est une solution permanente que le patient
+      ne retire jamais. Résultat naturel, confort identique à de vraies dents.</p>
+    `,
+  },
+  {
+    label: "Coût et durée de vie d'un implant",
+    video: "",
+    texte: `
+      <p>Un implant bien entretenu peut durer toute une vie. Le coût varie selon
+      la complexité du cas. Une prise en charge partielle par les mutuelles est
+      souvent possible dans le cadre du 100% Santé.</p>
+    `,
+  },
+  {
+    label: "Remplacement d'une arcade dentaire complète",
+    video: "/videos/implant-arcade.mp4",
+    texte: `
+      <p>La technique All-on-4 ou All-on-6 permet de remplacer l'intégralité des
+      dents d'une mâchoire avec seulement 4 ou 6 implants, sur lesquels est fixé
+      un bridge complet dès le lendemain de l'intervention.</p>
+    `,
+  },
+  {
+    label: "Greffes osseuses",
+    video: "/videos/greffes-osseuses.mp4",
+    texte: `
+      <p>Quand l'os de la mâchoire est insuffisant, une greffe osseuse
+      permet d'augmenter le volume osseux avant la pose des implants.</p>
+    `,
+  },
+];
+---
+
+<SoinLayout
+  title="Implantologie"
+  description="L'implantologie dentaire au Cabinet Dentaire du Dr LEBERT."
+>
+  <p>
+    Cliquez sur un thème pour lire le contenu et visionner la vidéo
+    correspondante.
+  </p>
+
+  <ul class="accordion">
+    {sousThemes.map((theme, index) => (
+      <li class="accordion-item">
+
+        <button
+          class="accordion-btn"
+          aria-expanded="false"
+          aria-controls={`panel-${index}`}
+        >
+          <span class="acc-label">
+            <span class="play-icon">▶</span>
+            {theme.label}
+          </span>
+          <span class="acc-chevron" aria-hidden="true">›</span>
+        </button>
+
+        <div class="accordion-panel" id={`panel-${index}`} hidden>
+
+          <!-- Texte -->
+          <div class="panel-text" set:html={theme.texte} />
+
+          <!-- Vidéo locale -->
+          {theme.video && theme.video !== "" ? (
+            <div class="video-wrapper">
+              <video
+                class="panel-video"
+                controls
+                preload="none"
+                data-src={theme.video}
+              >
+                <source data-src={theme.video} type="video/mp4" />
+                Votre navigateur ne supporte pas la lecture vidéo.
+              </video>
+            </div>
+          ) : (
+            <p class="no-video">🎬</p>
+          )}
+
+        </div>
+      </li>
+    ))}
+  </ul>
+</SoinLayout>
+
+<style>
+  .accordion {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .accordion-item {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* Bouton */
+  .accordion-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    text-align: left;
+    background: var(--color-primary-light);
+    border: none;
+    padding: 1rem 1.2rem;
+    font-family: var(--font-heading);
+    font-size: 0.97rem;
+    font-weight: 500;
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .accordion-btn:hover {
+    background: var(--color-secondary-light);
+  }
+
+  .accordion-btn[aria-expanded="true"] {
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .accordion-btn[aria-expanded="true"] .play-icon,
+  .accordion-btn[aria-expanded="true"] .acc-chevron {
+    color: #fff;
+  }
+
+  .acc-label {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .play-icon {
+    font-size: 0.7rem;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .acc-chevron {
+    font-size: 1.4rem;
+    font-weight: 300;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .accordion-btn[aria-expanded="true"] .acc-chevron {
+    transform: rotate(90deg);
+  }
+
+  /* Panneau */
+  .accordion-panel {
+    padding: 1.5rem 1.4rem;
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .panel-text {
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+  }
+
+  .panel-text :global(p)  { margin-bottom: 0.8em; }
+  .panel-text :global(ul),
+  .panel-text :global(ol) { padding-left: 1.3em; margin-bottom: 0.8em; }
+  .panel-text :global(li) { margin-bottom: 0.4em; }
+
+  /* Vidéo locale */
+  .video-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .panel-video {
+    width: 100%;
+    max-height: 480px;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .no-video {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+</style>
+
+<script>
+  document.querySelectorAll(".accordion-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      const panelId = btn.getAttribute("aria-controls")!;
+      const panel = document.getElementById(panelId);
+      const video = panel?.querySelector(".panel-video") as HTMLVideoElement | null;
+
+      if (expanded) {
+        // --- Fermer ---
+        btn.setAttribute("aria-expanded", "false");
+        panel?.setAttribute("hidden", "");
+        // Pause + réinitialise la vidéo
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+        }
+
+      } else {
+        // --- Fermer tous les autres d'abord ---
+        document.querySelectorAll(".accordion-btn").forEach((other) => {
+          if (other === btn) return;
+          other.setAttribute("aria-expanded", "false");
+          const otherId = other.getAttribute("aria-controls")!;
+          const otherPanel = document.getElementById(otherId);
+          otherPanel?.setAttribute("hidden", "");
+          const otherVideo = otherPanel?.querySelector(".panel-video") as HTMLVideoElement | null;
+          if (otherVideo) {
+            otherVideo.pause();
+            otherVideo.currentTime = 0;
+          }
+        });
+
+        // --- Ouvrir ---
+        btn.setAttribute("aria-expanded", "true");
+        panel?.removeAttribute("hidden");
+
+        // Chargement lazy : la vidéo ne se charge qu'au premier clic
+        if (video && !video.src) {
+          const src = video.dataset.src ?? "";
+          video.src = src;
+          // Charge les métadonnées uniquement (pas toute la vidéo)
+          video.load();
+        }
+
+        // Défilement doux
+        setTimeout(() => {
+          btn.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
+      }
+    });
+  });
+</script>

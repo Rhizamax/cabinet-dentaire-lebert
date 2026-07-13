@@ -1,0 +1,46 @@
+---
+// src/pages/404.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { CABINET } from "../config";
+---
+
+<BaseLayout
+  title="Page introuvable"
+  description="La page que vous recherchez n'existe pas ou plus."
+>
+  <section class="section error-section">
+    <div class="container error-content">
+      <p class="error-code">404</p>
+      <h1>Page introuvable</h1>
+      <p>La page que vous recherchez n'existe pas, a été déplacée, ou l'adresse comporte une erreur.</p>
+      <div class="error-actions">
+        <a href="/" class="btn btn-primary">Retour à l'accueil</a>
+        <a href="/contact" class="btn btn-outline-primary">Nous contacter</a>
+      </div>
+      <p class="error-phone">
+        Besoin d'aide immédiate ? Appelez-nous au <a href={CABINET.telephoneTel}>{CABINET.telephone}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-section { text-align: center; padding: clamp(4rem, 10vw, 7rem) 0; }
+  .error-content { max-width: 480px; margin: 0 auto; }
+  .error-code {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--color-primary-light);
+    -webkit-text-stroke: 2px var(--color-primary);
+    margin: 0;
+  }
+  .error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+  }
+  .error-phone { font-size: 0.92rem; color: var(--color-text-muted); }
+</style>

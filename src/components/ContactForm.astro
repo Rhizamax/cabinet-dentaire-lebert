@@ -1,0 +1,98 @@
+---
+// src/components/ContactForm.astro
+// Configuré pour Netlify Forms par défaut (formulaire statique détecté au build).
+// Pour utiliser Formspree à la place :
+//   1. Retirer les attributs data-netlify="true" et netlify-honeypot
+//   2. Remplacer action="/contact" par action="https://formspree.io/f/VOTRE_ID"
+//   3. Garder method="POST"
+---
+
+<form
+  name="contact"
+  method="POST"
+ 
+  action="https://formspree.io/f/mwvgezwk"
+  class="contact-form"
+  id="contact-form"
+>
+  <input type="hidden" name="form-name" value="contact" />
+  <p class="visually-hidden">
+    <label>Ne pas remplir si vous êtes humain : <input name="société" /></label>
+  </p>
+
+  <div class="form-row">
+    <label for="nom">Nom &amp; Prénom <span aria-hidden="true">*</span></label>
+    <input type="text" id="nom" name="nom" autocomplete="name" required />
+  </div>
+
+  <div class="form-row two-col">
+    <div>
+      <label for="email">Email <span aria-hidden="true">*</span></label>
+      <input type="email" id="email" name="email" autocomplete="email" required />
+    </div>
+    <div>
+      <label for="telephone">Téléphone</label>
+      <input type="tel" id="telephone" name="telephone" autocomplete="tel" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <label for="message">Message <span aria-hidden="true">*</span></label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+  </div>
+
+  <p class="required-note"><span aria-hidden="true">*</span> Champs obligatoires</p>
+
+  <button type="submit" class="btn btn-primary">Envoyer le message</button>
+</form>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+  }
+
+  .form-row { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-row.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .form-row.two-col > div { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  label {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--color-primary-dark);
+  }
+
+  input, textarea {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.7em 0.9em;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg-light);
+    color: var(--color-text);
+  }
+  input:focus, textarea:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+    background: #fff;
+  }
+
+  .required-note { font-size: 0.82rem; color: var(--color-text-muted); margin: 0; }
+
+  .contact-form .btn { align-self: flex-start; }
+
+  @media (max-width: 560px) {
+    .form-row.two-col { grid-template-columns: 1fr; }
+  }
+</style>

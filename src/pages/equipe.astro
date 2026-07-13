@@ -1,0 +1,133 @@
+---
+// src/pages/equipe.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Icon from "../components/Icon.astro";
+
+const team = [
+  {
+    nom: "Dr LEBERT",
+    role: "Chirurgien-dentiste",
+    bio: "Diplômé de la faculté dentaire de NANTES, Diplôme Universitaire en Réhabilitation Orale par Implant et Biomatériaux.",
+    photo: "/images/dr-lebert.jpeg",
+  },
+  {
+    nom: "Vanessa AUGUIN",
+    role: "Assistante dentaire",
+    bio: "Assistante Dentaire Stagiaire en formation",
+    photo: "/images/vanessa-augin.jpeg",
+  },
+  
+];
+
+const valeurs = [
+  { icon: "shield", title: "Confiance", text: "Une relation de confiance basée sur l'écoute et la transparence." },
+  { icon: "sparkle", title: "Modernité", text: "Des techniques et équipements à la pointe pour des soins de qualité." },
+  { icon: "team", title: "Confort des patients", text: "Un accueil chaleureux pour des soins sereins, petits et grands." },
+];
+---
+
+<BaseLayout
+  title="Notre équipe"
+  description="Découvrez l'équipe du Cabinet Dentaire du Dr LEBERT : chirurgien-dentiste et personnel soignant à votre écoute."
+>
+  <PageHero
+    eyebrow="Qui sommes-nous"
+    title="Notre équipe"
+    intro="Une équipe attentive et expérimentée, animée par l'écoute, la modernité et le confort des patients."
+  />
+
+  <section class="section">
+    <div class="container team-grid">
+      {team.map((member) => (
+        <article class="team-card">
+          {member.photo && (
+  <img src={member.photo} alt={member.nom} class="team-photo" />
+)}
+{!member.photo && (
+  <div class="placeholder team-photo">[PHOTO À FOURNIR]</div>
+)}
+          <h2>{member.nom}</h2>
+          <p class="role">{member.role}</p>
+          <p class="bio">{member.bio}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-tint-teal">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">L'esprit du cabinet</span>
+        <h2>Nos valeurs</h2>
+      </div>
+      <div class="valeurs-grid">
+        {valeurs.map((v) => (
+          <div class="valeur-card">
+            <span class="valeur-icon"><Icon name={v.icon} size={28} /></span>
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .team-card { text-align: center; }
+  .team-photo {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin: 0 auto 1.25rem;
+  max-width: 220px;   /* ← augmentez ou réduisez selon votre goût */
+  object-fit: cover;  /* ← ajoutez cette ligne pour que la photo remplisse bien le cercle */
+}
+  .team-card h2 { margin-bottom: 0.2em; font-size: 1.2rem; }
+  .role {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--color-secondary-dark);
+    margin-bottom: 0.6em;
+  }
+  .bio { color: var(--color-text-muted); font-size: 0.95rem; }
+
+  .valeurs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .valeur-card {
+    background: var(--color-bg);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+  }
+  .valeur-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-secondary-light);
+    color: var(--color-secondary-dark);
+    margin-bottom: 0.9rem;
+  }
+  .valeur-card h3 { margin-bottom: 0.4em; }
+  .valeur-card p { color: var(--color-text-muted); font-size: 0.92rem; margin: 0; }
+
+  @media (max-width: 900px) {
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .valeurs-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; }
+  }
+</style>

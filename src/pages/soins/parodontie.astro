@@ -1,0 +1,67 @@
+---
+import SoinLayout from "../../layouts/SoinLayout.astro";
+---
+
+<SoinLayout
+  title="Parodontie — Soins des gencives"
+  description="Diagnostic et traitement des maladies parodontales au Cabinet Dentaire du Dr LEBERT."
+>
+  <h2>Gencive saine</h2>
+  <p>
+    Une gencive saine ne saigne pas (ni au brossage, ni en mangeant, ni spontanément), n'est pas gonflée ni
+    douloureuse. Sa couleur est rose et ses défenses immunitaires sont intactes.
+  </p>
+
+  <h2>Premiers signes</h2>
+  <p>
+    Saignements, douleurs, gonflements sont des signes annonciateurs d'un problème gingival qui doivent
+    inciter à consulter rapidement. Les bactéries présentes sous la gencive peuvent provoquer une gingivite,
+    voire une parodontite si elles ne sont pas traitées.
+  </p>
+
+  <h2>Traitement des parodontopathies</h2>
+  <p>Le traitement comprend :</p>
+  <ol>
+    <li>L'apprentissage d'une hygiène bucco-dentaire rigoureuse (brossage, brossettes interdentaires)</li>
+    <li>
+      Le traitement initial : détartrage manuel ou ultrasonique, polissage, surfaçage radiculaire, traitement
+      des caries, répartition des forces occlusales
+    </li>
+    <li>
+      Le traitement chirurgical si nécessaire : intervention sur la gencive et/ou l'os alvéolaire pour
+      éliminer les poches parodontales profondes et restaurer une forme fonctionnelle à la gencive
+    </li>
+  </ol>
+
+  <p>
+    <strong>Contrôle périodique indispensable</strong> — la maladie parodontale peut reprendre si les
+    conditions d'hygiène ne sont pas rigoureusement maintenues.
+  </p>
+
+  <!-- Greffe de gencive + vidéo -->
+  <h2>Greffe de gencive</h2>
+  <p>Une greffe de gencive peut être envisagée dans certains cas.</p>
+
+  <div class="video-wrapper">
+    <video controls preload="none" poster="">
+      <source src="/videos/greffe-gencive.mp4" type="video/mp4" />
+      Votre navigateur ne supporte pas la lecture vidéo.
+    </video>
+  </div>
+
+</SoinLayout>
+
+<style>
+  .video-wrapper {
+    margin: 2rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .video-wrapper video {
+    width: 100%;
+    max-height: 480px;
+    display: block;
+  }
+</style>

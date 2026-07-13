@@ -1,0 +1,106 @@
+---
+// src/pages/contact.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Icon from "../components/Icon.astro";
+import { CABINET } from "../config";
+
+const mapQuery = encodeURIComponent(`${CABINET.adresse.ligne1}, ${CABINET.adresse.ligne2}`);
+---
+
+<BaseLayout
+  title="Contact & Rendez-vous"
+  description="Contactez le Cabinet Dentaire du Dr LEBERT : coordonnées, horaires, formulaire de contact et prise de rendez-vous."
+>
+  <PageHero
+    eyebrow="Nous contacter"
+    title="Contact & Rendez-vous"
+    intro="Une question, besoin d'un rendez-vous ? Notre équipe vous répond rapidement."
+  />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <h2>Coordonnées</h2>
+        <ul class="info-list">
+          <li>
+            <Icon name="pin" size={20} />
+            <span>{CABINET.adresse.ligne1}<br />{CABINET.adresse.ligne2}</span>
+          </li>
+          <li>
+            <Icon name="phone" size={20} />
+            <a href={CABINET.telephoneTel}>{CABINET.telephone}</a>
+          </li>
+          <li>
+            <Icon name="mail" size={20} />
+            <a href={`mailto:${CABINET.email}`}>{CABINET.email}</a>
+          </li>
+        </ul>
+
+        <h2 class="hours-heading">Horaires</h2>
+        <ul class="hours-list">
+          {CABINET.horaires.map((h) => (
+            <li><Icon name="clock" size={18} /> {h.jours} : {h.heures}</li>
+          ))}
+        </ul>
+        <p class="note">{CABINET.horairesNote}</p>
+
+        <div class="map-wrapper">
+          <p class="note">11 Bis rue du parc des sports, 44320 SAINT VIAUD</p>
+          <iframe
+            title="Localisation du cabinet"
+            src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h2>Envoyer un message</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .info-list, .hours-list {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .info-list li, .hours-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7em;
+    color: var(--color-text);
+  }
+  .info-list :global(svg), .hours-list :global(svg) { color: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
+
+  .hours-heading { margin-top: 2rem; }
+  .note { font-size: 0.85rem; color: var(--color-text-muted); }
+
+  .map-wrapper { margin-top: 1.5rem; }
+  .map-wrapper iframe {
+    width: 100%;
+    height: 280px;
+    border: 0;
+    border-radius: var(--radius-card);
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,167 @@
+---
+// src/pages/index.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SoinCard from "../components/SoinCard.astro";
+import WaveDivider from "../components/WaveDivider.astro";
+import Icon from "../components/Icon.astro";
+import { CABINET } from "../config";
+
+const quickLinks = [
+  { icon: "alert", label: "Urgence dentaire", href: "/soins/urgence-dentaire" },
+  { icon: "phone", label: "Contact", href: "/contact" },
+  { icon: "team", label: "Équipe", href: "/equipe" },  
+];
+
+const soins = [
+  { icon: "tooth", title: "Soins dentaires", href: "/soins-dentaires", description: "Toutes nos spécialités" },
+  { icon: "implant", title: "Implantologie", href: "/soins/implantologie", description: "Remplacement durable des dents" },
+  { icon: "child", title: "Dentiste Enfant", href: "/soins/dentiste-enfant", description: "Suivi adapté aux plus jeunes" },
+  { icon: "sparkle", title: "Blanchiment dentaire", href: "/soins/blanchiment", description: "Un sourire plus éclatant" },
+  { icon: "bridge", title: "Les prothèses", href: "/soins/protheses-bridges", description: "Couronnes, bridges, prothèses" },
+  { icon: "gum", title: "Parodontie", href: "/soins/parodontie", description: "Santé des gencives" },
+];
+---
+
+<BaseLayout
+  title="Cabinet Dentaire du Dr LEBERT"
+  description="Cabinet dentaire du Dr LEBERT — tous soins dentaires pour adultes et enfants. Prenez rendez-vous en ligne via Doctolib."
+>
+  <Hero />
+  <WaveDivider />
+
+  <section class="section quick-links" aria-label="Accès rapide">
+    <div class="container quick-grid">
+      {quickLinks.map((q) => (
+        <a
+          href={q.href}
+          class="quick-tile"
+          target={q.href && q.href.startsWith("http") ? "_blank" : undefined}
+          rel={q.href && q.href.startsWith("http") ? "noopener noreferrer" : undefined}
+        >
+          <span class="quick-icon"><Icon name={q.icon} size={26} /></span>
+          <span>{q.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-light" aria-labelledby="soins-heading">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Nos soins</span>
+        <h2 id="soins-heading">Nos soins dentaires</h2>
+        <p>Une prise en charge complète, pour toute la famille, à chaque étape de la santé bucco-dentaire.</p>
+      </div>
+      <div class="soins-grid">
+        {soins.map((s) => (
+          <SoinCard title={s.title} href={s.href} icon={s.icon} description={s.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="info-band">
+    <div class="container info-band-inner">
+      <div>
+        <h2>{CABINET.nom} — Adultes &amp; Enfants</h2>
+        <p class="info-hours">
+          <Icon name="clock" size={20} />
+          Lundi au Vendredi&nbsp;|&nbsp;09h00 à 19h00
+          <span class="note">(horaires à confirmer)</span>
+        </p>
+        <p class="info-address">
+          <Icon name="pin" size={20} />
+          {CABINET.adresse.ligne1}, {CABINET.adresse.ligne2}
+        </p>
+      </div>
+      <div class="info-actions">
+        <a href={CABINET.telephoneTel} class="btn btn-outline">
+          <Icon name="phone" size={18} /> {CABINET.telephone}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .quick-links { padding-top: clamp(2rem, 4vw, 3rem); padding-bottom: 0; }
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .quick-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    color: var(--color-primary-dark);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .quick-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+    color: var(--color-primary-dark);
+  }
+  .quick-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-secondary-light);
+    color: var(--color-secondary-dark);
+  }
+
+  .soins-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .info-band {
+    background: var(--color-secondary);
+    color: #fff;
+    padding: clamp(2.5rem, 5vw, 3.5rem) 0;
+  }
+  .info-band h2 { color: #fff; margin-bottom: 0.6em; }
+  .info-band-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .info-hours, .info-address {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    margin: 0.3em 0;
+    opacity: 0.95;
+  }
+  .info-hours .note { font-size: 0.8rem; opacity: 0.75; }
+  .info-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .quick-grid { grid-template-columns: repeat(2, 1fr); }
+    .soins-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .soins-grid { grid-template-columns: 1fr; }
+  }
+</style>

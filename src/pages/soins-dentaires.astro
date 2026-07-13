@@ -1,0 +1,56 @@
+---
+// src/pages/soins-dentaires.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import SoinCard from "../components/SoinCard.astro";
+
+const soins = [
+  { icon: "implant", title: "Implants", href: "/soins/implantologie" },
+  { icon: "sparkle", title: "Blanchiment", href: "/soins/blanchiment" },
+  { icon: "tooth", title: "Facettes", href: "/soins/facettes" },
+  { icon: "child", title: "Dentiste Enfant", href: "/soins/dentiste-enfant" },
+  { icon: "brush", title: "Hygiène dentaire", href: "/soins/hygiene-dentaire" },
+  { icon: "alert", title: "Caries", href: "/soins/caries" },
+  { icon: "tooth", title: "Traitement Endodontique", href: "/soins/endodontie" },
+  { icon: "bridge", title: "Prothèses & Bridges", href: "/soins/protheses-bridges" },
+  { icon: "gum", title: "Parodontie", href: "/soins/parodontie" },
+  { icon: "tooth", title: "Dents de sagesse", href: "/soins/dents-de-sagesse" },
+  { icon: "alert", title: "Urgence dentaire", href: "/soins/urgence-dentaire" },
+];
+---
+
+<BaseLayout
+  title="Soins dentaires"
+  description="Toutes les spécialités du Cabinet Dentaire du Dr LEBERT : implants, blanchiment, parodontie, endodontie, soins pour enfants et plus encore."
+>
+  <PageHero
+    eyebrow="Nos spécialités"
+    title="Soins dentaires"
+    intro="Une prise en charge complète de la santé bucco-dentaire, pour adultes et enfants."
+  />
+
+  <section class="section">
+    <div class="container soins-grid">
+      {soins.map((s) => (
+        <SoinCard title={s.title} href={s.href} icon={s.icon} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .soins-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 1024px) {
+    .soins-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .soins-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .soins-grid { grid-template-columns: 1fr; }
+  }
+</style>

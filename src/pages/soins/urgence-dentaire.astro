@@ -1,0 +1,116 @@
+---
+// src/pages/soins/urgence-dentaire.astro
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icon from "../../components/Icon.astro";
+import { CABINET } from "../../config";
+---
+
+<BaseLayout
+  title="Urgence dentaire"
+  description="Urgence dentaire ? Le Cabinet Dentaire du Dr LEBERT intervient rapidement : douleur, dent cassée, infection ou hémorragie buccale."
+>
+  <section class="urgence-hero">
+    <div class="container urgence-hero-inner">
+      <span class="urgence-badge"><Icon name="alert" size={18} /> Urgence dentaire</span>
+      <h1>Une urgence dentaire ?<br />Nous sommes là pour vous.</h1>
+      <p>
+        Les urgences dentaires ne choisissent pas leur moment et peuvent provoquer une grande détresse. Qu'il
+        s'agisse d'une douleur aiguë, d'une dent cassée, d'une infection ou d'une hémorragie buccale, notre
+        équipe est prête à intervenir rapidement et efficacement.
+      </p>
+      <a href={CABINET.telephoneTel} class="btn btn-call">
+        <Icon name="phone" size={22} /> Appeler maintenant → {CABINET.telephone}
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container urgence-content">
+      <p>
+        Au <strong>{CABINET.nom}</strong>, nous comprenons l'urgence de ces situations. Lorsque vous nous
+        contactez, notre priorité est de vous offrir un soulagement immédiat : nous vous écoutons, vous
+        prodiguons les conseils appropriés, puis vous proposons un rendez-vous d'urgence dans les meilleurs
+        délais.
+      </p>
+      <p>
+        N'ignorez pas les signes d'une urgence dentaire : douleur intense, traumatisme, signes d'infection.
+        Contactez-nous immédiatement par téléphone.
+      </p>
+
+      <div class="urgence-signs">
+        <div class="sign-card">
+          <Icon name="alert" size={24} />
+          <h3>Douleur intense</h3>
+          <p>Une douleur qui persiste ou s'intensifie ne doit jamais être ignorée.</p>
+        </div>
+        <div class="sign-card">
+          <Icon name="tooth" size={24} />
+          <h3>Dent cassée ou délogée</h3>
+          <p>Un traumatisme dentaire nécessite une prise en charge rapide.</p>
+        </div>
+        <div class="sign-card">
+          <Icon name="shield" size={24} />
+          <h3>Signes d'infection</h3>
+          <p>Gonflement, fièvre ou abcès : consultez sans attendre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .urgence-hero {
+    background: var(--color-primary-dark);
+    color: #fff;
+    padding: clamp(3rem, 7vw, 5rem) 0;
+    text-align: center;
+  }
+  .urgence-hero-inner { max-width: 720px; margin: 0 auto; }
+  .urgence-hero h1 { color: #fff; margin-bottom: 0.6em; }
+  .urgence-hero p { color: rgba(255,255,255,0.9); font-size: 1.05rem; margin-bottom: 2rem; }
+
+  .urgence-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.4em 1em;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-call {
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 1em 2em;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  }
+  .btn-call:hover { background: #fff; color: var(--color-primary-dark); }
+
+  .urgence-content { max-width: 800px; margin: 0 auto; }
+
+  .urgence-signs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .sign-card {
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    color: var(--color-primary);
+  }
+  .sign-card h3 { color: var(--color-primary-dark); margin: 0.5em 0 0.3em; font-size: 1.05rem; }
+  .sign-card p { color: var(--color-text-muted); font-size: 0.9rem; margin: 0; }
+
+  @media (max-width: 700px) {
+    .urgence-signs { grid-template-columns: 1fr; }
+  }
+</style>

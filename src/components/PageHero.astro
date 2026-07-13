@@ -1,0 +1,31 @@
+---
+// src/components/PageHero.astro
+interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+}
+const { eyebrow, title, intro } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="container">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h1>{title}</h1>
+    {intro && <p class="intro">{intro}</p>}
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
+    padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 5vw, 3rem);
+  }
+  .page-hero h1 { margin-bottom: 0.3em; }
+  .intro {
+    max-width: 640px;
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+</style>

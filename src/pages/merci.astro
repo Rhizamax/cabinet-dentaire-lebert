@@ -1,0 +1,48 @@
+---
+// src/pages/merci.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import { CABINET } from "../config";
+---
+
+<BaseLayout
+  title="Message envoyé"
+  description="Votre message a bien été envoyé au Cabinet Dentaire du Dr LEBERT."
+>
+  <section class="section merci-section">
+    <div class="container merci-content">
+      <span class="merci-icon"><Icon name="check" size={36} /></span>
+      <h1>Merci, votre message a bien été envoyé</h1>
+      <p>Notre équipe vous répondra dans les meilleurs délais.</p>
+      <div class="merci-actions">
+        <a href="/" class="btn btn-outline-primary">Retour à l'accueil</a>
+        <a href={CABINET.doctolib} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Prendre rendez-vous
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .merci-section { text-align: center; }
+  .merci-content { max-width: 520px; margin: 0 auto; }
+  .merci-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--color-secondary-light);
+    color: var(--color-secondary-dark);
+    margin-bottom: 1.5rem;
+  }
+  .merci-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+</style>

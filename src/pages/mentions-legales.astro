@@ -1,0 +1,58 @@
+---
+// src/pages/mentions-legales.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { CABINET } from "../config";
+---
+
+<BaseLayout
+  title="Mentions légales"
+  description="Mentions légales du site du Cabinet Dentaire du Dr LEBERT."
+>
+  <PageHero title="Mentions légales" />
+
+  <section class="section">
+    <div class="container legal-content">
+      <h2>Éditeur du site</h2>
+      <p class="placeholder">
+        [À COMPLÉTER : nom du Dr LEBERT, statut (entreprise individuelle / société), numéro RPPS,
+        numéro SIRET, adresse du cabinet, ordre des chirurgiens-dentistes de rattachement]
+      </p>
+
+      <h2>Directeur de la publication</h2>
+      <p>Dr LEBERT — {CABINET.adresse.ligne1}, {CABINET.adresse.ligne2}</p>
+
+      <h2>Hébergement</h2>
+      <p class="placeholder">[À COMPLÉTER : nom et coordonnées de l'hébergeur du site]</p>
+
+      <h2>Conception du site</h2>
+      <p class="placeholder">[À COMPLÉTER si réalisé par un prestataire]</p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des contenus présents sur ce site (textes, images, logo) est la propriété du
+        {CABINET.nom}, sauf mention contraire, et ne peut être reproduit sans autorisation préalable.
+      </p>
+
+      <h2>Données personnelles &amp; cookies (RGPD)</h2>
+      <p class="placeholder">
+        [À COMPLÉTER : politique de confidentialité détaillant la collecte des données via le formulaire
+        de contact, leur finalité, leur durée de conservation, et les droits d'accès, de rectification et
+        de suppression des utilisateurs, conformément au RGPD]
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Pour toute question relative à ces mentions légales :
+        <a href={`mailto:${CABINET.email}`}>{CABINET.email}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-content { max-width: 760px; }
+  .legal-content h2 { margin-top: 1.6em; font-size: 1.2rem; }
+  .legal-content h2:first-child { margin-top: 0; }
+  .legal-content p { color: var(--color-text); }
+</style>

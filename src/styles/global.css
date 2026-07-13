@@ -1,0 +1,178 @@
+/* src/styles/global.css */
+/* Charte graphique extraite du logo du Cabinet Dentaire du Dr LEBERT */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap');
+
+:root {
+  /* Couleurs de marque — extraites du logo */
+  --color-primary:        #125A98; /* bleu du logo (tooth + texte "CABINET DENTAIRE") */
+  --color-primary-dark:   #0D4476; /* bleu assombri — hover/active */
+  --color-primary-light:  #EAF2F8; /* teinte bleue claire — fonds de section */
+
+  --color-secondary:      #2E7A75; /* sarcelle du dégradé du logo, assombrie pour l'accessibilité */
+  --color-secondary-dark: #225D59; /* hover/active */
+  --color-secondary-light:#E8F5F3; /* teinte sarcelle claire — fonds de section */
+
+  --color-accent:         #1E8C84; /* sarcelle vive — CTA, accents, icônes actives */
+
+  --color-text:       #1a1a1a;
+  --color-text-muted: #505050; /* gris du logo ("du Dr LEBERT") */
+  --color-bg:         #ffffff;
+  --color-bg-light:   #f8f8f8;
+  --color-border:     #e0e0e0;
+
+  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-accent:  'Playfair Display', Georgia, serif; /* écho de l'italique "du" du logo */
+
+  --radius-card: 8px;
+  --radius-pill: 999px;
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-card-hover: 0 8px 24px rgba(18,90,152,0.14);
+  --max-width: 1200px;
+
+  --header-height: 76px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-primary-dark);
+  margin: 0 0 0.6em;
+}
+
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+a:hover { color: var(--color-primary-dark); }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  color: var(--color-secondary-dark);
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 0.4em;
+}
+
+/* Boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85em 1.6em;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(30,140,132,0.35);
+}
+.btn-primary:hover { background: var(--color-secondary-dark); color: #fff; }
+
+.btn-outline {
+  background: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+.btn-outline:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+.btn-outline-primary {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-outline-primary:hover { background: var(--color-primary); color: #fff; }
+
+/* Sections génériques */
+.section { padding: clamp(3rem, 6vw, 5.5rem) 0; }
+.section-light { background: var(--color-bg-light); }
+.section-tint-blue { background: var(--color-primary-light); }
+.section-tint-teal { background: var(--color-secondary-light); }
+
+.section-head {
+  max-width: 640px;
+  margin: 0 0 2.5rem;
+}
+.section-head.center { margin-inline: auto; text-align: center; }
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: repeating-linear-gradient(45deg, #f1f4f7, #f1f4f7 10px, #e7edf2 10px, #e7edf2 20px);
+  border: 1px dashed var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  border-radius: var(--radius-card);
+  padding: 1rem;
+  min-height: 180px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Réduction de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
