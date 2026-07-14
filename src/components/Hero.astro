@@ -1,8 +1,6 @@
 ---
-// src/components/Hero.astro
 import { CABINET } from "../config";
 import Icon from "./Icon.astro";
----
 ---
 
 <section class="hero">
@@ -12,7 +10,6 @@ import Icon from "./Icon.astro";
       <h1>Cabinet Dentaire<br />du Dr LEBERT</h1>
       <p class="subtitle">Tous soins dentaires adultes et enfants</p>
       <div class="hero-actions">
-        
         <a href={CABINET.telephoneTel} class="btn btn-outline-primary">
           <Icon name="phone" size={18} />
           Nous appeler
@@ -20,10 +17,12 @@ import Icon from "./Icon.astro";
       </div>
     </div>
     <div class="hero-visual">
-      <img src={`${import.meta.env.BASE_URL}images/cabinet.jpeg`}
-     alt="Cabinet Dentaire du Dr LEBERT"
-     class="hero-img"
-/>  </div>
+      <img
+        src={`${import.meta.env.BASE_URL}images/cabinet.jpeg`}
+        alt="Cabinet Dentaire du Dr LEBERT"
+        class="hero-img"
+      />
+    </div>
   </div>
 </section>
 
@@ -33,43 +32,32 @@ import Icon from "./Icon.astro";
     background: radial-gradient(circle at 85% 10%, var(--color-primary-light), transparent 55%),
                 radial-gradient(circle at 5% 90%, var(--color-secondary-light), transparent 50%);
   }
-
   .hero-grid {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
     gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
   }
-
   .hero-copy h1 { margin-bottom: 0.3em; }
-
   .subtitle {
     font-size: 1.2rem;
     color: var(--color-text-muted);
     margin-bottom: 1.75rem;
   }
-
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
   }
-
   .hero-visual { position: relative; }
-  .hero-placeholder {
-    aspect-ratio: 4 / 3;
+  .hero-img {
+    width: 100%;
     border-radius: 16px;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
   }
-
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-visual { order: -1; }
   }
-
-  .hero-img {
-  width: 100%;
-  border-radius: 16px;
-  object-fit: cover;
-  aspect-ratio: 4 / 3;
-}
 </style>
