@@ -2,7 +2,7 @@
 // src/layouts/SoinLayout.astro
 import BaseLayout from "./BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
-import { CABINET } from "../config";
+import { CABINET, url } from "../config";
 import Icon from "../components/Icon.astro";
 
 interface Props {
@@ -30,7 +30,7 @@ const { title, description, eyebrow = "Soins dentaires" } = Astro.props;
           <a href={CABINET.telephoneTel} class="btn btn-outline-primary">
             <Icon name="phone" size={18} /> {CABINET.telephone}
           </a>
-          <a href="/soins-dentaires" class="back-link">← Retour aux soins dentaires</a>
+          <a href={url("/soins-dentaires")} class="back-link">← Retour aux soins dentaires</a>
         </div>
       </aside>
     </div>

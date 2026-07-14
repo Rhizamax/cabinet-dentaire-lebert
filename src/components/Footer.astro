@@ -1,13 +1,13 @@
 ---
 // src/components/Footer.astro
-import { CABINET, NAV_LINKS } from "../config";
+import { CABINET, NAV_LINKS, url } from "../config";
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src="/logo.png" alt={CABINET.nom} width="120" height="86" class="footer-logo" />
+      <img src={`${import.meta.env.BASE_URL}logo.png`} alt={CABINET.nom} width="120" height="86" class="footer-logo" />
       <p>{CABINET.nom}</p>
     </div>
 
@@ -15,7 +15,7 @@ const year = new Date().getFullYear();
       <h3>Navigation</h3>
       <ul>
         {NAV_LINKS.map((link) => (
-          <li><a href={link.href}>{link.label}</a></li>
+          <li><a href={url(link.href)}>{link.label}</a></li>
         ))}
       </ul>
     </nav>
@@ -45,7 +45,7 @@ const year = new Date().getFullYear();
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <p>© {year} {CABINET.nom}. Tous droits réservés.</p>
-      <a href="/mentions-legales">Mentions légales</a>
+      <a href={url("/mentions-legales")}>Mentions légales</a>
     </div>
   </div>
 </footer>

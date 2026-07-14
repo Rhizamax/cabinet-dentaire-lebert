@@ -25,3 +25,8 @@ export const NAV_LINKS = [
   { label: "Soins dentaires", href: "/soins-dentaires" },
   { label: "Contact", href: "/contact" },
 ] as const;
+export const BASE = import.meta.env.BASE_URL;
+
+export function url(path: string): string {
+  return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+}

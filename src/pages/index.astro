@@ -5,21 +5,20 @@ import Hero from "../components/Hero.astro";
 import SoinCard from "../components/SoinCard.astro";
 import WaveDivider from "../components/WaveDivider.astro";
 import Icon from "../components/Icon.astro";
-import { CABINET } from "../config";
-
+import { CABINET, url } from "../config";
 const quickLinks = [
-  { icon: "alert", label: "Urgence dentaire", href: "/soins/urgence-dentaire" },
-  { icon: "phone", label: "Contact", href: "/contact" },
-  { icon: "team", label: "Équipe", href: "/equipe" },  
+  { Icon: "alert", label: "Urgence dentaire", href: url("/soins/urgence-dentaire") },
+  { Icon: "phone", label: "Contact", href: url("/contact") },
+  { Icon: "team", label: "Équipe", href: url("/equipe") },
 ];
 
 const soins = [
-  { icon: "tooth", title: "Soins dentaires", href: "/soins-dentaires", description: "Toutes nos spécialités" },
-  { icon: "implant", title: "Implantologie", href: "/soins/implantologie", description: "Remplacement durable des dents" },
-  { icon: "child", title: "Dentiste Enfant", href: "/soins/dentiste-enfant", description: "Suivi adapté aux plus jeunes" },
-  { icon: "sparkle", title: "Blanchiment dentaire", href: "/soins/blanchiment", description: "Un sourire plus éclatant" },
-  { icon: "bridge", title: "Les prothèses", href: "/soins/protheses-bridges", description: "Couronnes, bridges, prothèses" },
-  { icon: "gum", title: "Parodontie", href: "/soins/parodontie", description: "Santé des gencives" },
+  { Icon: "tooth", title: "Soins dentaires", href: url("/soins-dentaires"), description: "Toutes nos spécialités" },
+  { Icon: "implant", title: "Implantologie", href: url("/soins/implantologie"), description: "Remplacement durable des dents" },
+  { Icon: "child", title: "Dentiste Enfant", href: url("/soins/dentiste-enfant"), description: "Suivi adapté aux plus jeunes" },
+  { Icon: "sparkle", title: "Blanchiment dentaire", href: url("/soins/blanchiment"), description: "Un sourire plus éclatant" },
+  { Icon: "bridge", title: "Les prothèses", href: url("/soins/protheses-bridges"), description: "Couronnes, bridges, prothèses" },
+  { Icon: "gum", title: "Parodontie", href: url("/soins/parodontie"), description: "Santé des gencives" },
 ];
 ---
 
@@ -39,7 +38,7 @@ const soins = [
           target={q.href && q.href.startsWith("http") ? "_blank" : undefined}
           rel={q.href && q.href.startsWith("http") ? "noopener noreferrer" : undefined}
         >
-          <span class="quick-icon"><Icon name={q.icon} size={26} /></span>
+          <span class="quick-icon"><Icon name={q.Icon} size={26} /></span>
           <span>{q.label}</span>
         </a>
       ))}
@@ -55,7 +54,7 @@ const soins = [
       </div>
       <div class="soins-grid">
         {soins.map((s) => (
-          <SoinCard title={s.title} href={s.href} icon={s.icon} description={s.description} />
+          <SoinCard title={s.title} href={s.href} icon={s.Icon} description={s.description} />
         ))}
       </div>
     </div>

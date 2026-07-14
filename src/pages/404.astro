@@ -14,8 +14,8 @@ import { CABINET } from "../config";
       <h1>Page introuvable</h1>
       <p>La page que vous recherchez n'existe pas, a été déplacée, ou l'adresse comporte une erreur.</p>
       <div class="error-actions">
-        <a href="/" class="btn btn-primary">Retour à l'accueil</a>
-        <a href="/contact" class="btn btn-outline-primary">Nous contacter</a>
+        <a href={url("/")} class="btn btn-primary">Retour à l'accueil</a>
+        <a href={url("/contact")} class="btn btn-outline-primary">Nous contacter</a>
       </div>
       <p class="error-phone">
         Besoin d'aide immédiate ? Appelez-nous au <a href={CABINET.telephoneTel}>{CABINET.telephone}</a>

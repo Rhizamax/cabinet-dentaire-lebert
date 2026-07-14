@@ -3,19 +3,20 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import SoinCard from "../components/SoinCard.astro";
+import { url } from "../config";
 
 const soins = [
-  { icon: "implant", title: "Implants", href: "/soins/implantologie" },
-  { icon: "sparkle", title: "Blanchiment", href: "/soins/blanchiment" },
-  { icon: "tooth", title: "Facettes", href: "/soins/facettes" },
-  { icon: "child", title: "Dentiste Enfant", href: "/soins/dentiste-enfant" },
-  { icon: "brush", title: "Hygiène dentaire", href: "/soins/hygiene-dentaire" },
-  { icon: "alert", title: "Caries", href: "/soins/caries" },
-  { icon: "tooth", title: "Traitement Endodontique", href: "/soins/endodontie" },
-  { icon: "bridge", title: "Prothèses & Bridges", href: "/soins/protheses-bridges" },
-  { icon: "gum", title: "Parodontie", href: "/soins/parodontie" },
-  { icon: "tooth", title: "Dents de sagesse", href: "/soins/dents-de-sagesse" },
-  { icon: "alert", title: "Urgence dentaire", href: "/soins/urgence-dentaire" },
+  { icon: "implant", title: "Implants", href: url("/soins/implantologie") },
+  { icon: "sparkle", title: "Blanchiment", href: url("/soins/blanchiment") },
+  { icon: "tooth", title: "Facettes", href: url("/soins/facettes") },
+  { icon: "child", title: "Dentiste Enfant", href: url("/soins/dentiste-enfant") },
+  { icon: "brush", title: "Hygiène dentaire", href: url("/soins/hygiene-dentaire") },
+  { icon: "alert", title: "Caries", href: url("/soins/caries") },
+  { icon: "tooth", title: "Traitement Endodontique", href: url("/soins/endodontie") },
+  { icon: "bridge", title: "Prothèses & Bridges", href: url("/soins/protheses-bridges") },
+  { icon: "gum", title: "Parodontie", href: url("/soins/parodontie") },
+  { icon: "tooth", title: "Dents de sagesse", href: url("/soins/dents-de-sagesse") },
+  { icon: "alert", title: "Urgence dentaire", href: url("/soins/urgence-dentaire") },
 ];
 ---
 
