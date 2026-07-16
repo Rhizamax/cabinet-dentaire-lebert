@@ -6,8 +6,8 @@ const currentPath = Astro.url.pathname;
 
 <header class="site-header" id="site-header">
   <div class="container header-inner">
-    <a href={import.meta.env.BASE_URL} class="logo-link" aria-label={`${CABINET.nom} — retour à l'accueil`}>
-      <img src={`${import.meta.env.BASE_URL}/images/logo.png`} alt={CABINET.nom} class="logo-img" width="167" height="120" />
+    <a href={url("/")} class="logo-link" aria-label={`${CABINET.nom} — retour à l'accueil`}>
+      <img src={url("/images/logo.png")} alt={CABINET.nom} class="logo-img" width="167" height="120" />
     </a>
 
     <nav class="main-nav" aria-label="Navigation principale">
