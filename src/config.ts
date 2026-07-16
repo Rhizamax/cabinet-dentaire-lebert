@@ -28,5 +28,7 @@ export const NAV_LINKS = [
 export const BASE = import.meta.env.BASE_URL;
 
 export function url(path: string): string {
-  return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const clean = path.replace(/^\//, "");
+  return `${base}/${clean}`;
 }
