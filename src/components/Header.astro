@@ -160,15 +160,14 @@ const currentPath = Astro.url.pathname;
   .mobile-nav .btn { width: 100%; justify-content: center; }
 
   @media (max-width: 1024px) {
-    .main-nav { display: none; }
-    .phone-link span { display: none; }
-  }
+  .main-nav { display: none; }
+  .phone-link span { display: none; }
+  .hamburger { display: flex; }
+}
 
-  @media (max-width: 768px) {
-    .header-actions .btn-primary { display: none; }
-    .phone-link { display: none; }
-    .hamburger { display: flex; }
-  }
+@media (max-width: 768px) {
+  .phone-link { display: none; }
+}
 </style>
 
 <script>
