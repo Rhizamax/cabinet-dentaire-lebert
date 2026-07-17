@@ -66,8 +66,12 @@ const soins = [
         <h2>{CABINET.nom} — Adultes &amp; Enfants</h2>
         <p class="info-hours">
           <Icon name="clock" size={20} />
-          Lundi au Vendredi&nbsp;|&nbsp;09h00 à 19h00
-          <span class="note">(horaires à confirmer)</span>
+          <ul class="plain-list">
+        {CABINET.horaires.map((h) => (
+          <li>{h.jours} : {h.heures}</li>
+        ))}
+      </ul>
+      <p class="note">{CABINET.horairesNote}</p>
         </p>
         <p class="info-address">
           <Icon name="pin" size={20} />
