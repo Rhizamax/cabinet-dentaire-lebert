@@ -14,10 +14,7 @@ const currentPath = Astro.url.pathname;
       <ul>
         {NAV_LINKS.map((link) => (
           <li>
-            
-              href={url(link.href)}
-              aria-current={currentPath === link.href ? "page" : undefined}
-            >
+            <a href={url(link.href)} aria-current={currentPath === link.href ? "page" : undefined}>
               {link.label}
             </a>
           </li>
@@ -217,32 +214,36 @@ const currentPath = Astro.url.pathname;
 
     if (!btn || !nav || !overlay) return;
 
+    const button = btn;
+    const mobileNav = nav;
+    const mobileOverlay = overlay;
+
     function openMenu() {
-      btn.setAttribute("aria-expanded", "true");
-      btn.setAttribute("aria-label", "Fermer le menu");
-      nav.classList.add("open");
-      nav.setAttribute("aria-hidden", "false");
-      overlay.classList.add("open");
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-label", "Fermer le menu");
+      mobileNav.classList.add("open");
+      mobileNav.setAttribute("aria-hidden", "false");
+      mobileOverlay.classList.add("open");
       document.body.style.overflow = "hidden";
     }
 
     function closeMenu() {
-      btn.setAttribute("aria-expanded", "false");
-      btn.setAttribute("aria-label", "Ouvrir le menu");
-      nav.classList.remove("open");
-      nav.setAttribute("aria-hidden", "true");
-      overlay.classList.remove("open");
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Ouvrir le menu");
+      mobileNav.classList.remove("open");
+      mobileNav.setAttribute("aria-hidden", "true");
+      mobileOverlay.classList.remove("open");
       document.body.style.overflow = "";
     }
 
-    btn.addEventListener("click", () => {
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
+    button.addEventListener("click", () => {
+      const isOpen = button.getAttribute("aria-expanded") === "true";
       isOpen ? closeMenu() : openMenu();
     });
 
-    overlay.addEventListener("click", closeMenu);
+    mobileOverlay.addEventListener("click", closeMenu);
 
-    nav.querySelectorAll("a").forEach((link) => {
+    mobileNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
   }
