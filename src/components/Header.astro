@@ -37,13 +37,30 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <nav id="mobile-nav" class="mobile-nav" aria-label="Navigation mobile">
-    <ul>
-      {NAV_LINKS.map((link) => (
-        <li><a href={url(link.href)}>{link.label}</a></li>
-      ))}
-      <li><a href={CABINET.telephoneTel}>📞 {CABINET.telephone}</a></li>
-    </ul>
-  </nav>
+  <ul>
+    {NAV_LINKS.map((link) => (
+      <li><a href={url(link.href)}>{link.label}</a></li>
+    ))}
+    <!-- Pages principales -->
+<li><a href={url("/")}>🏠 Accueil</a></li>
+<li><a href={url("/equipe")}>👨‍⚕️ L'équipe</a></li>
+<li><a href={url("/soins-dentaires")}>🦷 Soins dentaires</a></li>
+<li><a href={url("/contact")}>✉️ Contact</a></li>
+
+<!-- Pages de soins -->
+<li><a href={url("/soins/implantologie")}>Implantologie</a></li>
+<li><a href={url("/soins/blanchiment")}>Blanchiment</a></li>
+<li><a href={url("/soins/facettes")}>Facettes</a></li>
+<li><a href={url("/soins/dentiste-enfant")}>Dentiste enfant</a></li>
+<li><a href={url("/soins/hygiene-dentaire")}>Hygiène dentaire</a></li>
+<li><a href={url("/soins/caries")}>Caries</a></li>
+<li><a href={url("/soins/endodontie")}>Endodontie</a></li>
+<li><a href={url("/soins/protheses-bridges")}>Prothèses & Bridges</a></li>
+<li><a href={url("/soins/parodontie")}>Parodontie</a></li>
+<li><a href={url("/soins/dents-de-sagesse")}>Dents de sagesse</a></li>
+<li><a href={url("/soins/urgence-dentaire")}>🚨 Urgence dentaire</a></li>
+  </ul>
+</nav>
 </header>
 
 <style>
