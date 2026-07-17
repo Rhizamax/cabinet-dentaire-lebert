@@ -7,7 +7,7 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src={url("/images/logo.png")} alt={CABINET.nom} width="120" height="86" class="footer-logo" />
+      <img src={url("/images/logo.png")} alt={CABINET.nom} width="80" height="120" class="footer-logo" />
       <p>{CABINET.nom}</p>
     </div>
 
@@ -65,7 +65,7 @@ const year = new Date().getFullYear();
   }
 
   .footer-brand { display: flex; flex-direction: column; gap: 0.75rem; }
-  .footer-logo { height: 64px; width: auto; }
+  .footer-logo { height: 80px; width: 120px; }
   .footer-brand p {
     font-family: var(--font-heading);
     font-weight: 600;
